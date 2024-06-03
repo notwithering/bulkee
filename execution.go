@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/notwithering/sgr"
 )
@@ -47,7 +48,7 @@ func confirm(remove, create []string) bool {
 func execute(remove, create []string) {
 	for _, id := range remove {
 		name, _ := trimIdentifier(id)
-		if err := os.RemoveAll(name); err != nil {
+		if err := os.RemoveAll(filepath.Join(workingDirectory, name)); err != nil {
 			fmt.Println(err)
 		}
 	}
@@ -55,11 +56,11 @@ func execute(remove, create []string) {
 	for _, id := range create {
 		name, isDir := trimIdentifier(id)
 		if isDir {
-			if err := os.Mkdir(name, os.ModePerm); err != nil {
+			if err := os.Mkdir(filepath.Join(workingDirectory, name), os.ModePerm); err != nil {
 				fmt.Println(err)
 			}
 		} else {
-			if _, err := os.Create(name); err != nil {
+			if _, err := os.Create(filepath.Join(workingDirectory, name)); err != nil {
 				fmt.Println(err)
 			}
 		}

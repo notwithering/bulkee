@@ -8,8 +8,10 @@ import (
 	"slices"
 )
 
+var workingDirectory string
+
 func getBefore() []string {
-	var workingDirectory string = flag.Arg(0)
+	workingDirectory = flag.Arg(0)
 	if workingDirectory == "" {
 		workingDirectory = "."
 	}
