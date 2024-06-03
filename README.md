@@ -1,10 +1,11 @@
+> [!WARNING]
+> Renaming is not yet implemented, attempting to do so will result in loss of data.
+
 # Bulkee
 
 [![MIT License](https://img.shields.io/badge/License-MIT-a10b31)](LICENSE)
 
-**Bulkee** is a completely horrid program that I mocked up in 1 hour to let me quickly bulk remove and create files similar to the "manually select packages" option for pacman.
-
-Please for the love of god do not actually use unless you are forced to, one day I will fix it to have less crap error messages and make it look pretty but for now, it is absolutely rancid to use.
+**Bulkee** is a program that lets you quickly remove and create files easily similar to the "manually select packages" option for pacman.
 
 ```bash
 $ ls
@@ -18,11 +19,14 @@ $ bulkee
   5 main.go
   6 yep.txt
 (*:wq*)
-Remove:
-README.md
-Create:
-yep.txt
-Executing in 3 seconds...
+:: Entries will be removed:
+ - README.md
+
+:: Entries will be created:
+ + yep.txt
+
+:: Proceed with execution? [Y/n]
+>>
 $ ls
 go.mod  go.sum  LICENSE  main.go  yep.txt
 ```
