@@ -7,29 +7,7 @@
 
 **Bulkee** is a program that lets you quickly remove and create files easily similar to the "manually select packages" option for pacman.
 
-```bash
-$ ls
-go.mod  go.sum  LICENSE  main.go  README.md
-$ bulkee
-(*open text editor*)
-  1 LICENSE
-  2
-  3 go.mod
-  4 go.sum
-  5 main.go
-  6 yep.txt
-(*:wq*)
-:: Entries will be removed:
- - README.md
-
-:: Entries will be created:
- + yep.txt
-
-:: Proceed with execution? [Y/n]
->>
-$ ls
-go.mod  go.sum  LICENSE  main.go  yep.txt
-```
+![untitled](https://github.com/notwithering/bulkee/assets/124115470/394db956-dacd-46d2-b44f-476fb2077cc2)
 
 ## Installation
 
