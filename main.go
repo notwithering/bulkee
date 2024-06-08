@@ -2,9 +2,13 @@ package main
 
 import (
 	"flag"
+	"fmt"
 )
 
 func main() {
+	flag.Usage = func() {
+		fmt.Println("usage: bulkee <dir>")
+	}
 	flag.Parse()
 
 	before := getBefore()
