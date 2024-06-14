@@ -45,7 +45,7 @@ func yesno(preferYes bool) (yes bool, err error) {
 	case "n", "no":
 		return false, nil
 	default:
-		if preferYes {
+		if in == "" && preferYes {
 			return true, nil
 		} else {
 			return false, nil
