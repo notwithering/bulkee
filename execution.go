@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-
-	"github.com/notwithering/sgr"
 )
 
 func confirm(remove, create []string) bool {
@@ -16,7 +14,7 @@ func confirm(remove, create []string) bool {
 	if len(remove) > 0 {
 		fmt.Printf(strInfo, "Entries will be removed:")
 		for _, id := range remove {
-			fmt.Printf(" "+sgr.FgHiRed+"-"+sgr.Reset+" %s\n", id)
+			fmt.Printf(strRemove, id)
 		}
 
 		if len(create) > 0 {
@@ -27,7 +25,7 @@ func confirm(remove, create []string) bool {
 	if len(create) > 0 {
 		fmt.Printf(strInfo, "Entries will be created:")
 		for _, id := range create {
-			fmt.Printf(" "+sgr.FgHiGreen+"+"+sgr.Reset+" %s\n", id)
+			fmt.Printf(strCreate, id)
 		}
 	}
 
