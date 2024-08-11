@@ -2,23 +2,15 @@ package main
 
 import (
 	"bufio"
-	"flag"
 	"fmt"
 	"os"
 	"slices"
 )
 
-var workingDirectory string
-
-func getBefore() []string {
-	workingDirectory = flag.Arg(0)
-	if workingDirectory == "" {
-		workingDirectory = "."
-	}
-
-	entries, err := os.ReadDir(workingDirectory)
+func getBefore(dir string) []string {
+	entries, err := os.ReadDir(dir)
 	if err != nil {
-		fmt.Printf(bulkeeError, err)
+		fmt.Printf(strError, err)
 		os.Exit(1)
 	}
 
@@ -36,7 +28,7 @@ func getAfter(before []string) []string {
 
 	tmpFile, err := os.Open(name)
 	if err != nil {
-		fmt.Printf(bulkeeError, err)
+		fmt.Printf(strError, err)
 		os.Exit(1)
 	}
 	defer os.Remove(tmpFile.Name())

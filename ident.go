@@ -30,6 +30,5 @@ func trimIdentifier(id string) (name string, isDir bool) {
 }
 
 func cleanIdentifier(id string) string {
-	name, isDir := trimIdentifier(id)
-	return getIdentifier(name, isDir)
+	return getIdentifier(trimIdentifier(id))
 }

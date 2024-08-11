@@ -11,11 +11,16 @@ func main() {
 	}
 	flag.Parse()
 
-	before := getBefore()
+	dir := flag.Arg(0)
+	if dir == "" {
+		dir = "."
+	}
+
+	before := getBefore(dir)
 	after := getAfter(before)
 	remove, create := difference(before, after)
 	if !confirm(remove, create) {
 		return
 	}
-	execute(remove, create)
+	execute(dir, remove, create)
 }

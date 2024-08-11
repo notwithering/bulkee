@@ -13,7 +13,7 @@ import (
 func edit(before []string) string {
 	tmpFile, err := os.CreateTemp(os.TempDir(), "bulkee")
 	if err != nil {
-		fmt.Printf(bulkeeError, err)
+		fmt.Printf(strError, err)
 		os.Exit(1)
 	}
 

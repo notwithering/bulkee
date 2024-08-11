@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	bulkeeError string = sgr.FgHiRed + "error:" + sgr.Reset + " %s\n"
-	bulkeeInfo  string = sgr.FgHiBlue + "::" + sgr.Reset + " %s\n"
-	bulkeeInput string = ">> "
+	strError string = sgr.FgHiRed + "error:" + sgr.Reset + " %s\n"
+	strInfo  string = sgr.FgHiBlue + "::" + sgr.Reset + " %s\n"
+	strInput string = ">> "
 )

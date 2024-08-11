@@ -14,7 +14,7 @@ func confirm(remove, create []string) bool {
 	}
 
 	if len(remove) > 0 {
-		fmt.Printf(bulkeeInfo, "Entries will be removed:")
+		fmt.Printf(strInfo, "Entries will be removed:")
 		for _, id := range remove {
 			fmt.Printf(" "+sgr.FgHiRed+"-"+sgr.Reset+" %s\n", id)
 		}
@@ -25,7 +25,7 @@ func confirm(remove, create []string) bool {
 	}
 
 	if len(create) > 0 {
-		fmt.Printf(bulkeeInfo, "Entries will be created:")
+		fmt.Printf(strInfo, "Entries will be created:")
 		for _, id := range create {
 			fmt.Printf(" "+sgr.FgHiGreen+"+"+sgr.Reset+" %s\n", id)
 		}
@@ -33,22 +33,22 @@ func confirm(remove, create []string) bool {
 
 	fmt.Print("\n")
 
-	fmt.Printf(bulkeeInfo, "Proceed with execution? [Y/n]")
-	fmt.Print(bulkeeInput)
+	fmt.Printf(strInfo, "Proceed with execution? [Y/n]")
+	fmt.Print(strInput)
 
 	yes, err := yesno(true)
 	if err != nil {
-		fmt.Printf(bulkeeError, err)
+		fmt.Printf(strError, err)
 		os.Exit(1)
 	}
 
 	return yes
 }
 
-func execute(remove, create []string) {
+func execute(dir string, remove, create []string) {
 	for _, id := range remove {
 		name, _ := trimIdentifier(id)
-		if err := os.RemoveAll(filepath.Join(workingDirectory, name)); err != nil {
+		if err := os.RemoveAll(filepath.Join(dir, name)); err != nil {
 			fmt.Println(err)
 		}
 	}
@@ -56,11 +56,11 @@ func execute(remove, create []string) {
 	for _, id := range create {
 		name, isDir := trimIdentifier(id)
 		if isDir {
-			if err := os.Mkdir(filepath.Join(workingDirectory, name), os.ModePerm); err != nil {
+			if err := os.Mkdir(filepath.Join(dir, name), os.ModePerm); err != nil {
 				fmt.Println(err)
 			}
 		} else {
-			if _, err := os.Create(filepath.Join(workingDirectory, name)); err != nil {
+			if _, err := os.Create(filepath.Join(dir, name)); err != nil {
 				fmt.Println(err)
 			}
 		}
